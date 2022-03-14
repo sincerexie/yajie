@@ -1,20 +1,45 @@
 <script setup lang="ts">
+  import { ref, onMounted } from 'vue'
+  const devicesRef = ref<HTMLInputElement | null>(null);
+  const congratsRef = ref<HTMLInputElement | null>(null)
+  onMounted(() => {
+    const screen = window.screen.width;
+    const scaleValue = `scale(${screen / 1080})`
+    if (devicesRef.value) {
+      devicesRef.value.style.transform = scaleValue;
+    }
+    if (congratsRef.value) {
+      congratsRef.value.style.transform = scaleValue;
+    }
+  });
 </script>
 
 <template>
-  <main class="devices">
-  <h1><span class="iu">I</span> <span class="love">Love</span> <span class="heart">❤</span> <span class="yo">Yo</span><span class="iu">u</span></h1>
+  <main class="devices" ref="devicesRef">
+    <h1><span class="iu">I</span> <span class="love">Love</span> <span class="heart">❤</span> <span class="yo">Yo</span><span class="iu">u</span></h1>
   </main>
-  <div class="congrats">
+  <div class="congrats" ref="congratsRef">
     <span></span>
     <span></span>
     <span></span>
     <span></span>
     <span></span>
   </div>
+  <div class="name">
+    雅洁小宝贝~
+  </div>
 </template>
 
 <style scoped>
+.name {
+  position: absolute;
+  font-size: 0.25rem;
+  color: #fff;
+  left: 50%;
+  top: 1rem;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+}
 .devices {
  width: 1080px;
  box-shadow: 0px 0px 0px 10px #fff;
@@ -24,6 +49,7 @@
  align-items: center;
  justify-content: center;
  position: relative;
+ transform: scale(calc(100vw/1080));
  animation: devices var(--cubezier);
 }
 .devices:after {
@@ -236,9 +262,6 @@ h1 span {
  80% { color: #fff;}
   81% { color: var(--red);}
 }
-
-
-
 
 /* RESPONSIVE */
 @media all and (max-width: 1080px) and (min-width: 720px) {

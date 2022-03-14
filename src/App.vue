@@ -10,6 +10,10 @@ import Love from './components/Love.vue';
 
 <style>
 #app {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,7 +24,8 @@ import Love from './components/Love.vue';
 /* Reset */
 html {
   box-sizing: border-box;
-  font-size: 16px;
+  -webkit-text-size-adjust: none;
+  font-size: calc(100vw / 3.75);
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -43,11 +48,14 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 
 body {
- display: flex;
- align-items: center;
- justify-content: center;
- height: 100vh;
- background-color: var(--yellow);
- animation: bgRed ease-out 6s infinite;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--yellow);
+  animation: bgRed ease-out 6s infinite;
 }
 </style>
